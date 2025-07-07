@@ -25,24 +25,24 @@ pipeline {
         }
         stage('Build') {
             steps {
-                mvn clean package
+                sh 'mvn clean package'
             }
         }
         stage('Unit Tests') {
             steps {
-                mvn test
+                sh 'mvn test'
             }
         }
-        stage('Build and push image') {
-            steps {
-                dockerBuildAndPush(
-                    organization: DOCKER_ORGANIZATION,
-                    imageName: DOCKER_IMAGE_NAME,
-                    tag: DOCKER_IMAGE_TAG,
-                    credentialsId: DOCKER_CREDENTIALS_ID
-                )
-            }
-        }
+        // stage('Build and push image') {
+        //     steps {
+        //         dockerBuildAndPush(
+        //             organization: DOCKER_ORGANIZATION,
+        //             imageName: DOCKER_IMAGE_NAME,
+        //             tag: DOCKER_IMAGE_TAG,
+        //             credentialsId: DOCKER_CREDENTIALS_ID
+        //         )
+        //     }
+        // }
     }
     post {
         always {
