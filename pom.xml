@@ -10,9 +10,9 @@
 	</parent>
 	<groupId>com.example</groupId>
 	<artifactId>library</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>library</name>
-	<description>Demo project for Spring Boot</description>
+	<version>0.0.2-SNAPSHOT</version>
+	<name>Library Manager</name>
+	<description>Library management API</description>
 	<url/>
 	<licenses>
 		<license/>
@@ -64,7 +64,28 @@
 			<artifactId>spring-dotenv</artifactId>
 			<version>4.0.0</version>
 		</dependency>
-	</dependencies>
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt-api</artifactId>
+			<version>0.11.5</version>
+		</dependency>
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt-impl</artifactId>
+			<version>0.11.5</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt-jackson</artifactId>
+			<version>0.11.5</version>
+			<scope>runtime</scope>
+		</dependency>
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-security</artifactId>
+			</dependency>
+		</dependencies>
 
 	<build>
 		<plugins>
@@ -94,5 +115,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
 </project>
