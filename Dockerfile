@@ -14,13 +14,13 @@ COPY mvnw pom.xml ./
 RUN chmod +x ./mvnw
 
 # Download dependencies and cache them
-RUN ./mvnw dependency:go-offline
+RUN ./mvnw dependency:go-offline -q
 
 # Copy the source code
 COPY src ./src
 
 # Build the application, skipping tests to reduce build time
-RUN ./mvnw clean package -DskipTests
+RUN ./mvnw clean package -DskipTests -q
 
 # Stage 2: Create the final Docker image
 FROM openjdk:17-jdk-alpine
