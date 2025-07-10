@@ -1,6 +1,3 @@
-@Library('jenkins-shared-lib') _
-
-
 pipeline {
     agent any
 
@@ -33,16 +30,6 @@ pipeline {
                 sh 'mvn test'
             }
         }
-        // stage('Build and push image') {
-        //     steps {
-        //         dockerBuildAndPush(
-        //             organization: DOCKER_ORGANIZATION,
-        //             imageName: DOCKER_IMAGE_NAME,
-        //             tag: DOCKER_IMAGE_TAG,
-        //             credentialsId: DOCKER_CREDENTIALS_ID
-        //         )
-        //     }
-        // }
     }
     post {
         always {
