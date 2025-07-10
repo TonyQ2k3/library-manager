@@ -16,6 +16,9 @@ RUN ./mvnw dependency:go-offline
 # Copy the source code
 COPY src ./src
 
+# Give execute permission to the Maven wrapper script
+RUN chmod +x ./mvnw
+
 # Build the application, skipping tests to reduce build time
 RUN ./mvnw clean package -DskipTests
 
