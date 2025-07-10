@@ -10,14 +10,14 @@ COPY .mvn/ .mvn
 # Copy the Maven wrapper and pom.xml
 COPY mvnw pom.xml ./
 
+# Give execute permission to the Maven wrapper script
+RUN chmod +x ./mvnw
+
 # Download dependencies and cache them
 RUN ./mvnw dependency:go-offline
 
 # Copy the source code
 COPY src ./src
-
-# Give execute permission to the Maven wrapper script
-RUN chmod +x ./mvnw
 
 # Build the application, skipping tests to reduce build time
 RUN ./mvnw clean package -DskipTests
