@@ -1,3 +1,4 @@
 docker
 Dockerfile
-**.md
+*.md
+Jenkins-*

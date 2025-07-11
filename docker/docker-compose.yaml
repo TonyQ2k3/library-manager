@@ -15,21 +15,6 @@ services:
       - library_network
     volumes:
       - db_data:/var/lib/mysql
-  
-  backend:
-    image: tonyq2k3/library-backend:0.0.1
-    container_name: library_backend
-    environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://database:3306/library
-      SPRING_DATASOURCE_USERNAME: admin
-      SPRING_DATASOURCE_PASSWORD: password
-      SPRING_JPA_HIBERNATE_DDL_AUTO: update
-    ports:
-      - "8080:8080"
-    depends_on:
-      - database
-    networks:
-      - library_network
 
 volumes:
   db_data:

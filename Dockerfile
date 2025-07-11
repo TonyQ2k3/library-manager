@@ -31,6 +31,9 @@ WORKDIR /app
 # Copy the built JAR file from the build stage
 COPY --from=build /app/target/*.jar app.jar
 
+ENV FRONTEND_API=http://libba-frontend
+ENV SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/library
+
 #  Run the application
 ENTRYPOINT ["java", "-jar", "app.jar"]
 
