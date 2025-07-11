@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>library</artifactId>
-	<version>0.0.2-SNAPSHOT</version>
-	<name>Library Manager</name>
+	<artifactId>libba-backend</artifactId>
+	<version>0.1.0</version>
+	<name>Libba Books Backend</name>
 	<description>Library management API</description>
 	<url/>
 	<licenses>
