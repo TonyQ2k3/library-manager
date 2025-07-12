@@ -2,7 +2,7 @@ name: Java CI with Maven
 
 on:
   push:
-    branches: [ "feature/*" ]
+    branches: [ "feature/*", "main", "dev" ]
   pull_request:
     branches: [ "main", "dev" ]
   workflow_dispatch:
@@ -20,5 +20,7 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         cache: maven
-    - name: Build and Test with Maven
-      run: mvn -B package
+    - name: Build with Maven
+      run: mvn -B package -DskipTests=true -q
+    - name: Run unit tests
+      run: mvn test
