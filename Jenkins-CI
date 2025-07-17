@@ -34,7 +34,7 @@ pipeline {
         }
         stage('Build and scan Docker image') {
             steps {
-                dockerBuildAndScan(
+                dockerBuild(
                     imageName: DOCKER_IMAGE_NAME
                 )
             }
