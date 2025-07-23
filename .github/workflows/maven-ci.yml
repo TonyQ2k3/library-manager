@@ -1,10 +1,13 @@
-name: Java CI with Maven
+name: Backend CI
 
 on:
   push:
-    branches: [ "feature/*", "main", "dev" ]
+    branches: [ "feature/**" ]
+    paths: ["**.java", "**.xml", "**.properties", "**.yml", "**.yaml"]
   pull_request:
+    types: [opened, reopened]
     branches: [ "main", "dev" ]
+    paths: ["**.java", "**.xml", "**.properties", "**.yml", "**.yaml"]
   workflow_dispatch:
 
 jobs:
