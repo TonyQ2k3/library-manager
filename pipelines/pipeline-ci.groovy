@@ -1,0 +1,57 @@
+@Library('jenkins-shared-lib') _
+
+pipeline {
+    agent any
+
+    tools {
+        maven 'maven3'
+        dockerTool 'docker'
+    }
+
+    environment {
+        CI = 'true'
+        DOCKER_CREDENTIALS_ID = 'dockerhub-credentials'
+        DOCKER_ORGANIZATION = 'tonyq2k3'
+        DOCKER_IMAGE_NAME = 'library-backend'
+        DOCKER_IMAGE_TAG = 'latest'
+    }
+
+    stages {
+        stage('Checkout code') {
+            steps {
+                checkout scmGit(
+                    branches: [[name: 'main']],
+                    userRemoteConfigs: [[url: 'https://github.com/TonyQ2k3/library-manager.git']]
+                )
+            }
+        }
+        stage('Build') {
+            steps {
+                sh 'mvn clean package -DskipTests'
+            }
+        }
+        stage('Unit Tests') {
+            steps {
+                sh 'mvn test'
+            }
+        }
+        stage('Build and scan Docker image') {
+            steps {
+                dockerBuild(
+                    imageName: DOCKER_IMAGE_NAME
+                )
+            }
+        }
+    }
+    post {
+        always {
+            cleanWs()
+        }
+        success {
+            echo 'Pipeline completed successfully!'
+        }
+        failure {
+            echo 'Pipeline failed!'
+        }
+    }
+}
