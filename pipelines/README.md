@@ -1,0 +1,1 @@
+This directory contains pipeline code for "Pipeline script" option, instead of "Pipeline script from SCM"
